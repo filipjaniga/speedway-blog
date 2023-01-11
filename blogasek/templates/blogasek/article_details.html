@@ -1,0 +1,11 @@
+{% extends 'blogasek/base.html' %}
+{% block title %}
+    "{{ post.title }}" - post nr {{ post.pk }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }} - {{ post.author }}</h1>
+    <p>{{ post.body }}</p>
+    <br><br>
+    <button type="button" class="btn btn-primary"><a href="{% url 'home' %}">Wróć do listy</a></button>
+{% endblock %}

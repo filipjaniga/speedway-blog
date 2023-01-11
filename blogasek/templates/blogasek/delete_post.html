@@ -1,0 +1,18 @@
+{% extends 'blogasek/base.html' %}
+{% block title %}
+    Usuń se
+{% endblock %}
+
+{% block content %}
+    <h1>Usuń post</h1>
+    <h3>"{{ post.title }}"</h3>
+    <br><br>
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            <strong>ar ju siur</strong>
+            <button class="btn btn-warning">Usuń post</button>
+        </form>
+    </div>
+{% endblock %}

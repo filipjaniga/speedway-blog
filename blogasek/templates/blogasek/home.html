@@ -1,0 +1,40 @@
+{% extends 'blogasek/base.html' %}
+
+{% block title %}
+    Strona główna
+{% endblock %}
+
+{% block content %}
+    <h1>DUPA</h1>
+    <ul class="list-group">
+        {% for post in post_list %}
+            <li class="list-group-item">
+                <b>Tytuł:</b> <a href="{% url 'details' post.slug %}">{{ post.title }}</a><br>
+                <b>Autor:</b> {{ post.author }}<br>
+                <b>Treść:</b> {{ post.body }}<br>
+                {% if user == post.author %}
+                    <a href="{% url 'update' post.pk %}" class="update">Edytuj</a>
+                    <a href="{% url 'delete' post.pk %}" class="delete">Usuń</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
