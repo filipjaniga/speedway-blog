@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Planer zawodów
+{% endblock %}
+
+{% block content %}
+    <h1>:DDDDDDDDDDDDDDDDDD</h1>
+    <ul class="list-group">
+        {% for task in task_list %}
+            <li class="list-group-item">
+                <b>Tytuł:</b> <a href="{% url 'calendar_details' task.pk %}">{{ task.title }}</a><br>
+                <b>Autor:</b> {{ task.author }}<br>
+                <b>Opis:</b> {{ task.description }}<br>
+                <b>Data zawodów:</b> {{ task.match_date|date:'Y-m-d, G:i' }}<br>
+                <b>Utworzono:</b> {{ task.created_at|date:'Y-m-d, G:i' }}<br>
+                {% if user == post.author %}
+                    <a href="#" class="update">Edytuj</a>
+                    <a href="#" class="delete">Usuń</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

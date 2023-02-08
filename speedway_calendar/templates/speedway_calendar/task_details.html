@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    "{{ task.title }}"
+{% endblock %}
+
+{% block content %}
+    <h1>{{ task.title }}</h1>
+    <h2>{{ task.place }}, {{ task.match_date|date:'Y-m-d, G:i' }}</h2>
+    <p>{{ task.description }}</p>
+    <p>{{ weather.temperature }}</p>
+    <p>{{ weather.description }}</p>
+    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="weather image">
+    <br><br>
+    <button type="button" class="btn btn-primary"><a href="{% url 'calendar_home' %}">Wróć do listy</a></button>
+{% endblock %}

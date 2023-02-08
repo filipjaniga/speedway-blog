@@ -2,6 +2,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from django.shortcuts import render
 
 
 class homeView(ListView):
@@ -54,6 +55,5 @@ class deletePostView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-
-
-
+def handler403(request, exception):
+    return render(request, 'blogasek/403.html', status=403)

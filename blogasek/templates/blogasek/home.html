@@ -1,4 +1,4 @@
-{% extends 'blogasek/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}
     Strona główna
@@ -12,6 +12,7 @@
                 <b>Tytuł:</b> <a href="{% url 'details' post.slug %}">{{ post.title }}</a><br>
                 <b>Autor:</b> {{ post.author }}<br>
                 <b>Treść:</b> {{ post.body }}<br>
+                <b>Utworzono:</b> {{ post.created_at }}<br>
                 {% if user == post.author %}
                     <a href="{% url 'update' post.pk %}" class="update">Edytuj</a>
                     <a href="{% url 'delete' post.pk %}" class="delete">Usuń</a>

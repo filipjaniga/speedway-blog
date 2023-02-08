@@ -18,6 +18,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blogasek.urls')),
+    path('blog/', include('blogasek.urls')),
+    path('calendar/', include('speedway_calendar.urls')),
     path('', include('django.contrib.auth.urls'), name='login')
 ]
+
+handler403 = 'blogasek.views.handler403'
