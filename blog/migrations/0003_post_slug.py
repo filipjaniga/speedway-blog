@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blogasek', '0002_post_created_at_post_updated_at'),
+        ('blog', '0002_post_created_at_post_updated_at'),
     ]
 
     operations = [

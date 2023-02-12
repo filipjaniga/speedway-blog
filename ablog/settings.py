@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'blogasek.apps.BlogasekConfig',
+    'blog.apps.BlogConfig',
     'speedway_calendar.apps.SpeedwayCalendarConfig',
     'django.contrib.admin',
     'django.contrib.auth',

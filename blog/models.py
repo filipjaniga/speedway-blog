@@ -1,8 +1,7 @@
-from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse
+from django.db import models
 from django.template.defaultfilters import slugify
-from django.utils import timezone
+from django.urls import reverse
 
 
 class Post(models.Model):
