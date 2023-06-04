@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
+
+{% load markdown_extras %}
+
 {% block title %}
     "{{ post.title }}" - post nr {{ post.pk }}
 {% endblock %}
 
 {% block content %}
     <h1>{{ post.title }} - {{ post.author }}</h1>
-    <p>{{ post.body }}</p>
+    <p>{{ post.body | convert_markdown | safe }}</p>
     <br><br>
     <button type="button" class="btn btn-primary"><a href="{% url 'blog_home' %}">Wróć do listy</a></button>
 {% endblock %}
