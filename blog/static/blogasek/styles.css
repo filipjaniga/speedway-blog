@@ -1,9 +1,18 @@
 body {
     background-color: ivory;
+    background: url("/static/blogasek/background.jpg") no-repeat fixed center;
 }
 
 .main-content {
     margin-top: 3rem;
+}
+
+.main-content > * {
+    opacity: 70%;
+}
+
+.main-content > p {
+    opacity: 1;
 }
 
 button > a {

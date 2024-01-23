@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
 import requests
 
+
 from .models import Task
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
