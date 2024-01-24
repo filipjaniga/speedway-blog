@@ -12,6 +12,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class HomeView(ListView):
     model = Task
     template_name = 'speedway_calendar/home.html'
+    def get_queryset(self):
+        return Task.objects.filter(author__username=self.request.user)
 
 class TaskDetailsView(LoginRequiredMixin, DetailView):
     model = Task
