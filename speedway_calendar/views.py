@@ -1,7 +1,7 @@
 from django.contrib.sites import requests
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 import requests
 
 
@@ -41,3 +41,13 @@ class TaskDetailsView(LoginRequiredMixin, DetailView):
         context['weather'] = weather
 
         return context
+    
+class addTaskView(LoginRequiredMixin, CreateView):
+    model = Task
+    template_name = 'speedway_calendar/add_task.html'
+    fields = ['title', 'place', 'match_date', 'description']
+    login_url = reverse_lazy('login')
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
