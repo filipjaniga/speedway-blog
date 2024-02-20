@@ -48,7 +48,7 @@ class deletePostView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     raise_exception = True
 
     def get_success_url(self):
-        return reverse('home')
+        return reverse('blog_home')
 
     def test_func(self):
         post = self.get_object()
