@@ -11,8 +11,10 @@ class homeView(ListView):
     model = Post
     template_name = 'blog/home.html'
     paginate_by = 5
+    login_url = reverse_lazy('login')
 
-class postDetailsView(LoginRequiredMixin, DetailView):
+
+class postDetailsView(DetailView):
     model = Post
     template_name = 'blog/article_details.html'
     login_url = reverse_lazy('login')

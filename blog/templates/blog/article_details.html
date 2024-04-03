@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ post.title }} - {{ post.author }}</h1>
+    <h3 class="mb-0">{{ post.title }}</h3>
+    <span class="mt-0">{{ post.author }}</span>
     <p>{{ post.body | convert_markdown | safe }}</p>
     <br><br>
     <button type="button" class="btn btn-primary"><a href="{% url 'blog_home' %}">Wróć do listy</a></button>

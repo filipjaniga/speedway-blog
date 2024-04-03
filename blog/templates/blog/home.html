@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% load markdown_extras %}
 
@@ -7,18 +8,23 @@
 {% endblock %}
 
 {% block content %}
-    <h1>DUPA</h1>
+    <h1 class="d-flex justify-content-center my-3">Najnowsze posty</h1>
     <ul class="list-group">
         {% for post in post_list %}
-            <li class="list-group-item">
-                <b>Tytuł:</b> <a href="{% url 'details' post.slug %}">{{ post.title }}</a><br>
-                <b>Autor:</b> {{ post.author }}<br>
-                <b>Treść:</b> {{ post.body }}<br>
-                <b>Utworzono:</b> {{ post.created_at }}<br>
-                {% if user == post.author %}
+            <li class="list-group-item mx-0 px-4 pt-4">
+                 <div class="d-flex justify-content-start">
+                 <img src="{% static 'speed.jpeg' %}" alt="speedy gonzales" width="240" height="140">
+                <div class="mx-2 mt-0 pt-0">
+                    <h5><a href="{% url 'details' post.slug %}">{{ post.title }}</a></h5>
+                    <b>Autor:</b> {{ post.author }}<br>
+                    <!--<b>Treść:</b> {{ post.body|slice:":400" }}<br>-->
+                    <b>Utworzono:</b> {{ post.created_at }}<br>
+                    {% if user == post.author %}
                     <a href="{% url 'update' post.pk %}" class="update">Edytuj</a>
                     <a href="{% url 'delete' post.pk %}" class="delete">Usuń</a>
                 {% endif %}
+                </div>
+                </div>
             </li>
         {% endfor %}
     </ul>
