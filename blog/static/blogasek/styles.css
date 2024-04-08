@@ -1,5 +1,5 @@
 body {
-    background-color: dimgrey;
+    background-color: #e8e8e8;
 }
 
 .main-content {
@@ -12,8 +12,8 @@ button > a {
     color: white;
 }
 
-nav {
-    color: ivory;
+.mainnav {
+    background-color: #f8f9fa ;
 }
 
 .delete {
@@ -22,11 +22,11 @@ nav {
 
 h5 > a {
     text-decoration: none;
-    color: #003b1a;
+    color: #151515;
 }
 
 h5 > a:hover {
-    color: blue;
+    color: #9d9d9d;
     -webkit-transition: color 0.3s ease-in;
     -moz-transition: color 0.3s ease-in;
     -ms-transition: color 0.3s ease-in;
@@ -43,6 +43,11 @@ h5 > a:hover {
 
 
 .list-group-item {
-    background-color: gray;
+    background-color: #f8f9fa;
+    background-color: #f8f9fa;
     border: none;
+}
+
+ul > .list-group-item:last-child {
+    padding-bottom: 30px;
 }

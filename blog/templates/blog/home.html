@@ -8,17 +8,17 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="d-flex justify-content-center my-3">Najnowsze posty</h1>
+    <h1 class="d-flex justify-content-center my-3">Najnowsze wiadomości</h1>
     <ul class="list-group">
         {% for post in post_list %}
             <li class="list-group-item mx-0 px-4 pt-4">
                  <div class="d-flex justify-content-start">
-                 <img src="{% static 'speed.jpeg' %}" alt="speedy gonzales" width="240" height="140">
+                 <img src="{% static 'speed.jpeg' %}" class="rounded" alt="speedy gonzales" width="240" height="140">
                 <div class="mx-2 mt-0 pt-0">
                     <h5><a href="{% url 'details' post.slug %}">{{ post.title }}</a></h5>
                     <b>Autor:</b> {{ post.author }}<br>
                     <!--<b>Treść:</b> {{ post.body|slice:":400" }}<br>-->
-                    <b>Utworzono:</b> {{ post.created_at }}<br>
+                    <b>Utworzono:</b> {{ post.created_at|date:"j E Y" }}<br>
                     {% if user == post.author %}
                     <a href="{% url 'update' post.pk %}" class="update">Edytuj</a>
                     <a href="{% url 'delete' post.pk %}" class="delete">Usuń</a>
@@ -29,21 +29,32 @@
         {% endfor %}
     </ul>
 
-    <div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center m-4">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">Pierwsza</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Poprzednia</a></li>
+
+            {% else %}
+                <li class="page-item disabled"><a class="page-link">Pierwsza</a></li>
+                <li class="page-item disabled"><a class="page-link">Poprzednia</a></li>
+            {% endif %}
+
+            <li class="page-item">
+                <a class="page-link"> Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}. </a>
+            </li>
+
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Następna</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Ostatnia</a></li>
+            {% else %}
+                <li class="page-item disabled"><a class="page-link">Następna</a></li>
+                <li class="page-item disabled"><a class="page-link">Ostatnia</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 {% endblock %}

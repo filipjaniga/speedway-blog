@@ -10,7 +10,7 @@ from .models import Post
 class homeView(ListView):
     model = Post
     template_name = 'blog/home.html'
-    paginate_by = 5
+    paginate_by = 7
     login_url = reverse_lazy('login')
 
 
