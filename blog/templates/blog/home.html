@@ -13,7 +13,11 @@
         {% for post in post_list %}
             <li class="list-group-item mx-0 px-4 pt-4">
                  <div class="d-flex justify-content-start">
+                 {% if post.image %}
+                 <img src="{{ post.image.url }}" class=" rounded" alt="speedy gonzales" width="240" height="140">
+                 {% else %}
                  <img src="{% static 'speed.jpeg' %}" class="rounded" alt="speedy gonzales" width="240" height="140">
+                 {% endif %}
                 <div class="mx-2 mt-0 pt-0">
                     <h5><a href="{% url 'details' post.slug %}">{{ post.title }}</a></h5>
                     <b>Autor:</b> {{ post.author }}<br>

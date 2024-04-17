@@ -24,7 +24,6 @@ class AddPostView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = 'blog/add_post.html'
     form_class = PostForm
-    # fields = ['title', 'body']
     login_url = reverse_lazy('login')
 
     def form_valid(self, form):

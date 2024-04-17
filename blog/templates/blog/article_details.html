@@ -13,7 +13,10 @@
         <a href="{% url 'delete' post.pk %}" class="btn btn-outline-danger btn-sm">Usuń</a></span>
     <p>{{ post.body | convert_markdown | safe }}</p>
     <br><br>
-
+    {% if post.image %}
+        {{ post.image }}
+        <img src="{{ post.image.url }}">
+    {% endif %}
     <div>
         <h3>
             Komentarze

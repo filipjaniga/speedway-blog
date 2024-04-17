@@ -16,12 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', include('blog.urls'), name='blog'),
     path('accounts/', include('django.contrib.auth.urls'), name='login'),
     path('admin/', admin.site.urls),
     path('calendar/', include('speedway_calendar.urls')),
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler403 = 'blog.views.handler403'
