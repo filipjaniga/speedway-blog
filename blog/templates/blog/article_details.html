@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
 {% load markdown_extras %}
+
 
 {% block title %}
     "{{ post.title }}" - post nr {{ post.pk }}
@@ -8,8 +8,34 @@
 
 {% block content %}
     <h3 class="mb-0">{{ post.title }}</h3>
-    <span class="mt-0">{{ post.author }}</span>
+    <span class="mt-0">{{ post.author }}
+            <a href="{% url 'update' post.pk %}" class="btn btn-outline-primary btn-sm">Edytuj</a>
+        <a href="{% url 'delete' post.pk %}" class="btn btn-outline-danger btn-sm">Usuń</a></span>
     <p>{{ post.body | convert_markdown | safe }}</p>
     <br><br>
+
+    <div>
+        <h3>
+            Komentarze
+            <a href="{% url 'add_comment' post.pk %}" type="button" class="btn btn-outline-primary btn-sm">Dodaj komentarz</a>
+        </h3>
+    </div>
+
+
+    {% if not post.comments.all %}
+        nie ma jeszcze komentarzy
+    {% else %}
+        <ul class="list-group">
+        {% for comment in post.comments.all %}
+            <li class="list-group-item">
+                <strong>{{ comment.author }}</strong>
+            {{ comment.created_at }}<br>
+            {{ comment.body }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+
     <button type="button" class="btn btn-primary"><a href="{% url 'blog_home' %}">Wróć do listy</a></button>
 {% endblock %}

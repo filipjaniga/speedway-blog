@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+
+{#{% load crispy_forms_tags %}#}
 
 {% block title %}
-    Dodaj nowy post
+    Dodaj nowy komentarz
 {% endblock %}
 
 {% block content %}
-    <h1>Dodaj sobie posta bracholu</h1>
+    <h1>Dodaj sobie komenta bracholu</h1>
     <form method="POST">
     {% csrf_token %}
     {{ form }}

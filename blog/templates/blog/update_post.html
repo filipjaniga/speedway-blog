@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Edytowanie posta "{{ post.title }}"
+    Edycja posta "{{ post.title }}"
 {% endblock %}
 
 {% block content %}
-    <h1>edytuj se</h1>
+    <h1>Edycja: {{ post.title }}</h1>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}

@@ -19,7 +19,7 @@
                     <b>Autor:</b> {{ post.author }}<br>
                     <!--<b>Treść:</b> {{ post.body|slice:":400" }}<br>-->
                     <b>Utworzono:</b> {{ post.created_at|date:"j E Y" }}<br>
-                    {% if user == post.author %}
+                    {% if user.is_superuser  %}
                     <a href="{% url 'update' post.pk %}" class="update">Edytuj</a>
                     <a href="{% url 'delete' post.pk %}" class="delete">Usuń</a>
                 {% endif %}

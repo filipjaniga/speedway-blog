@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.http import HttpResponseNotFound
 import requests
 
-
+from .forms import TaskForm
 from .models import Task
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
@@ -47,7 +47,7 @@ class TaskDetailsView(LoginRequiredMixin, DetailView):
 class addTaskView(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'speedway_calendar/add_task.html'
-    fields = ['title', 'place', 'match_date', 'description']
+    form_class = TaskForm
     login_url = reverse_lazy('login')
     
     def form_valid(self, form):
